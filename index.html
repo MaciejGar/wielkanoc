@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Świąteczne Życzenia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('pisanki.jpg'); /* Add your background image URL here */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+            color: #00ff55;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1eff00;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #2bff00;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00ff22;
+        }
+        #greetings {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .author {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Świąteczne Życzenia</h1>
+        <form id="greetingsForm">
+            <label for="name">Podaj swoje imię:</label>
+            <input type="text" id="name" name="name" placeholder="Wpisz imię" required>
+            <button type="button" onclick="showGreetings()">Dalej</button>
+        </form>
+        <div id="greetings" style="display: none;"></div>
+        <div class="author">Autor: Maciej Garbula</div>
+    </div>
+
+    <script>
+        function showGreetings() {
+            const nameInput = document.getElementById("name").value;
+            const greetingsDiv = document.getElementById("greetings");
+            const isFemaleName = nameInput.toLowerCase().endsWith("a");
+            const isMaleName = nameInput.toLowerCase() !== "kuba" && !isFemaleName;
+
+            if (isFemaleName) {
+                greetingsDiv.innerHTML = `<p>Szanowana Pani ${nameInput}, Zdrowia, szczęścia, humoru dobrego
+a przy tym wszystkim stołu bogatego.
+Mokrego dyngusa, smacznego jajka
+i niech te święta będą jak bajka!</p>`;
+            } else if (isMaleName) {
+                greetingsDiv.innerHTML = `<p>Szanowany Pan ${nameInput},Zdrowia, szczęścia, humoru dobrego
+a przy tym wszystkim stołu bogatego.
+Mokrego dyngusa, smacznego jajka
+i niech te święta będą jak bajka!</p>`;
+            } else {
+                greetingsDiv.innerHTML = `<p>Wesołych świąt, ${nameInput}!</p>`;
+            }
+
+            greetingsDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
